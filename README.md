@@ -20,12 +20,15 @@
 
  * Copy the `carousel` directory into your main SilverStripe webroot
  * Extend the page class that you want to have the carousel on - for example extend HomePage by copying the following to mysite/_config/extensions.yml
+ 
+```yaml
 ---
 Name: extensions
 ---
 HomePage:
   extensions:
     ['CarouselExtension']
+```
 
  * Run /dev/build?flush=1
 
