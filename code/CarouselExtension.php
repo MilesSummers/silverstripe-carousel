@@ -7,7 +7,7 @@ class CarouselExtension extends DataExtension {
 		'CarouselAuto' => 'Boolean',
 		'CarouselSpeed' => 'Int',
 		'CarouselPause' => 'Int',
-		'CarouselTransition' => "Enum('horizontal, vertical, fade', 'horizontal')"		
+		'CarouselTransition' => "Enum('fade, slide', 'slide')"		
 	);
 
 	private static $defaults = array(
@@ -16,7 +16,7 @@ class CarouselExtension extends DataExtension {
 		"CarouselAuto" => 1,
 		"CarouselSpeed" => 300,
 		"CarouselPause" => 5000,
-		"CarouselTransition" => 'horizontal',
+		"CarouselTransition" => 'slide'
 	);
 	
 	private static $has_one = array(
@@ -29,6 +29,8 @@ class CarouselExtension extends DataExtension {
 	 private static $casting = array(
 		"Carousel" => 'HTMLText',
 	);
+  
+	public static $IncludeJQuery = true;
   
 	public function updateCMSFields(FieldList $fields) {
         $fields->addFieldToTab('Root.Carousel', new CheckboxField('CarouselControls', 'Show navigation'));
@@ -45,11 +47,10 @@ class CarouselExtension extends DataExtension {
 	}	
 
 	function contentControllerInit($controller) {
-		// Requirements::javascript("framework/thirdparty/jquery/jquery.min.js");
-		Requirements::set_force_js_to_bottom(true);
-		Requirements::javascript("carousel/javascript/jquery.bxslider.min.js");
-		Requirements::css("carousel/css/jquery.bxslider.css");
-		// Requirements::css("carousel/css/owl.theme.css");
+		if($this->IncludeJQuery) Requirements::javascript("framework/thirdparty/jquery/jquery.min.js");
+		else Requirements::set_force_js_to_bottom(true);
+		Requirements::javascript("carousel/thirdparty/flexslider/jquery.flexslider-min.js");
+		Requirements::css("carousel/thirdparty/flexslider/flexslider.css");
 		
 		$vars = array(
 			"controls" => $this->owner->CarouselControls?'true':'false',
@@ -59,7 +60,7 @@ class CarouselExtension extends DataExtension {
 			'speed' => $this->owner->CarouselSpeed,
 			'pause' => $this->owner->CarouselPause			
 		);
-		Requirements::javascriptTemplate("carousel/javascript/bx.template.js", $vars);
+		Requirements::javascriptTemplate("carousel/javascript/flexslider.template.js", $vars);
 	}
 	
 	function getCarousel() {

@@ -15,6 +15,8 @@
 ## Requirements
 
  * SilverStripe 3.1 or newer
+ 
+	Note: if you are including your own JQuery then need a recent version of framework from git as we need Requirements::set_force_js_to_bottom
 
 ## Installation
 
@@ -35,6 +37,17 @@ HomePage:
 ## Usage
  * Include $Carousel into your page template
  * Edit the page in the CMS to add images/links to the carousel.
+ * If you have included your won JQuery in the page template you will need to set the config value IncludeJQuery to false
+ 
+ ```yaml
+---
+Name: extensions
+---
+HomePage:
+  extensions:
+    ['CarouselExtension']
+  IncludeJQuery: false
+```
 
 ## Known issues:
 	None
