@@ -2,7 +2,7 @@
 
 ## Introduction
 
-	Provide an image slider or carousel utilising the jquery bxslider plugin
+	Provide an image slider or carousel utilising the jquery flexslider plugin
 
 ## To do
 	* Expose more options
