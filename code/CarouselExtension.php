@@ -47,8 +47,10 @@ class CarouselExtension extends DataExtension {
 	}	
 
 	function contentControllerInit($controller) {
-		if($this->IncludeJQuery) Requirements::javascript("framework/thirdparty/jquery/jquery.min.js");
+		$jquery = $this->owner->config()->get('IncludeJQuery');
+		if($jquery) Requirements::javascript("framework/thirdparty/jquery/jquery.min.js");
 		else Requirements::set_force_js_to_bottom(true);
+		
 		Requirements::javascript("carousel/thirdparty/flexslider/jquery.flexslider-min.js");
 		Requirements::css("carousel/thirdparty/flexslider/flexslider.css");
 		
