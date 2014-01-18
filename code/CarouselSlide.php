@@ -19,7 +19,12 @@ class CarouselSlide extends DataObject {
 	public function getCMSFields() {
 		$fields = new FieldList();
 		$fields->push(new TextField('Title', 'Title'));
-		$fields->push(new UploadField('SlideImage', 'SlideImage'));
+		$fields->push($image = new UploadField('SlideImage', 'SlideImage'));
+		$image->setAllowedFileCategories('image');
+		$image->setAllowedMaxFileNumber(1);
+		$image->setCanAttachExisting(true);
+		$image->setFolderName('Carousel');
+		
 		$fields->push(new TreeDropdownField("IntenalLinkID", "Choose a page to link to", "SiteTree"));
 		$fields->push(new CheckboxField('External', 'Using external link'));
 		$fields->push(new TextField('ExternalLink', 'External Link URL'));
