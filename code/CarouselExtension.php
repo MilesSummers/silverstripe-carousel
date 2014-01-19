@@ -49,7 +49,11 @@ class CarouselExtension extends DataExtension {
 	function contentControllerInit($controller) {
 		$jquery = $this->owner->config()->get('IncludeJQuery');
 		if($jquery) Requirements::javascript("framework/thirdparty/jquery/jquery.min.js");
-		else Requirements::set_force_js_to_bottom(true);
+		else {
+			// check for suitable version of Requirements
+			if(method_exists('Requirements', 'set_force_js_to_bottom')) Requirements::set_force_js_to_bottom(true);
+			else trigger_error('CarouselExtension: Need a newer version of Requirements to use own JQuery', E_USER_WARNING);
+		}
 		
 		Requirements::javascript("carousel/thirdparty/flexslider/jquery.flexslider-min.js");
 		Requirements::css("carousel/thirdparty/flexslider/flexslider.css");
