@@ -52,7 +52,7 @@ class CarouselExtension extends DataExtension {
 		else {
 			// check for suitable version of Requirements
 			if(method_exists('Requirements', 'set_force_js_to_bottom')) Requirements::set_force_js_to_bottom(true);
-			else trigger_error('CarouselExtension: Need a newer version of Requirements to use own JQuery', E_USER_WARNING);
+			else trigger_error('CarouselExtension: Need a newer version of Silverstripe (>= 3.1.3) to use own JQuery', E_USER_WARNING);
 		}
 		
 		Requirements::javascript("carousel/thirdparty/flexslider/jquery.flexslider-min.js");

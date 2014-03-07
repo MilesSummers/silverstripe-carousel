@@ -9,15 +9,12 @@
 
 ## Maintainer Contact
 
- * Miles Summers
-   <miles (at) youngearth (dot) com (dot) au>
+ * Miles Summers <miles (at) youngearth (dot) com (dot) au>
 
 ## Requirements
 
- * SilverStripe 3.1 or newer
+ * SilverStripe 3.1.3 or newer
  
-	Note: if you are including your own JQuery then need a recent version of framework from git as we need Requirements::set_force_js_to_bottom
-
 ## Installation
 
  * Copy the `carousel` directory into your main SilverStripe webroot
