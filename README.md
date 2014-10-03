@@ -34,7 +34,7 @@ HomePage:
 ## Usage
  * Include $Carousel into your page template
  * Edit the page in the CMS to add images/links to the carousel.
- * If you have included your won JQuery in the page template you will need to set the config value IncludeJQuery to false
+ * If you have included your own JQuery in the page template you will need to set the config value IncludeJQuery to false
  
  ```yaml
 ---
@@ -42,7 +42,7 @@ Name: extensions
 ---
 HomePage:
   extensions:
-    ['CarouselExtension']
+    - 'CarouselExtension'
   IncludeJQuery: false
 ```
 
